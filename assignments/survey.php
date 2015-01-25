@@ -7,7 +7,7 @@
 		<h1>Survey</h1>
 		<nav>
 			<ul>
-				<li><a href="/"></a></li>
+				<li><a href="/">Home</a></li>
 				<li><a href="/assignments/">Assignments</a>
 					<ul>
 						<li><a href="/assignments/survey.php">Survey</a></li>
@@ -60,7 +60,7 @@
 			<input type="radio" name="subject" value="history">
 			<label for="history">History</label><br>
 
-			<input type="submit" name="action" value="survey">
+			<input type="submit" name="action" value="survey"><br><br>
 
 		</form>
 	</main>
