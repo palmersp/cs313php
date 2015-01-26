@@ -3,6 +3,9 @@
 	session_start();
 	$_SESSION['vote'] = TRUE;
 
+	$_SESSION['iceCream'] = $_POST['iceCream'];
+	$seasons = $_POST['seasons'];
+
  ?>
 
  <!DOCTYPE html>
@@ -29,18 +32,9 @@
 
  	<?php 
 
- 	if ($_POST['iceCream'] == 'chocolate') {
- 		$iceCream = 'Chocolate';
- 	} elseif ($_POST['iceCream'] == 'vanilla') {
- 		$iceCream = 'Vanilla';
- 	} elseif ($_POST['iceCream'] == 'rockyRoad') {
- 		$iceCream = 'Rocky Road';
- 	} elseif ($_POST['iceCream'] == 'strawberry') {
- 		$iceCream = 'Strawberry';
- 	}
 
- 	echo $iceCream . '<br>';
- 	echo $_POST['seasons'] . '<br>';
+ 	echo $_SESSION['iceCream'] . '<br>';
+ 	echo $seasons . '<br>';
  	echo $_POST['building'] . '<br>';
  	echo $_POST['subject'] . '<br>';
 
