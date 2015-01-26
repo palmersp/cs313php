@@ -29,10 +29,10 @@
 
  	<?php 
 
- 	echo $_POST['iceCream'];
- 	echo $_POST['seasons'];
- 	echo $_POST['building'];
- 	echo $_POST['subject'];
+ 	echo $_POST['iceCream'] . '<br>';
+ 	echo $_POST['seasons'] . '<br>';
+ 	echo $_POST['building'] . '<br>';
+ 	echo $_POST['subject'] . '<br>';
 
  	if (isset($_SESSION['vote'])) {
  		echo "Thanks for taking the survey!";
