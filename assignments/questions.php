@@ -58,7 +58,7 @@
 			<input type="radio" name="subject" value="History">
 			<label for="history">History</label><br>
 
-			<input type="submit" name="action" value="survey"><br><br>
+			<input type="submit" name="action" value="Submit"><br><br>
 
 		</form>
 	</main>
