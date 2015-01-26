@@ -34,6 +34,10 @@
  	echo $_POST['building'];
  	echo $_POST['subject'];
 
+ 	if (isset($_SESSION['vote'])) {
+ 		echo "Thanks for taking the survey!";
+ 	}
+
  	 ?>
  	</main>
  </body>

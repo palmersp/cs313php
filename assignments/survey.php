@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if ($_SESSION['vote']) {
+if (isset($_SESSION['vote'])) {
 	include 'results.php';
 } else{
 	include 'questions.php';
