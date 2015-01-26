@@ -3,8 +3,6 @@
 	session_start();
 	$_SESSION['vote'] = TRUE;
 
-	$_SESSION['iceCream'] = $_POST['iceCream'];
-	$seasons = $_POST['seasons'];
 
  ?>
 
@@ -33,8 +31,8 @@
  	<?php 
 
 
- 	echo $_SESSION['iceCream'] . '<br>';
- 	echo $seasons . '<br>';
+ 	echo $_POST['iceCream'] . '<br>';
+ 	echo $_POST['seasons'] . '<br>';
  	echo $_POST['building'] . '<br>';
  	echo $_POST['subject'] . '<br>';
 
