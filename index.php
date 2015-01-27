@@ -24,9 +24,6 @@
             <div class="container main clearfix">
                 <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/main.php'; ?>
                 <h2>Welcome</h2>
-                <picture>
-                    <img class="container" srcset="/media/images/portfolioPic600.png" title="Spencer Palmer" alt="Spencer Palmer">
-                </picture>
             </div>   
          </main>
         
