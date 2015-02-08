@@ -4,7 +4,7 @@ if(!$_SESSION){
    session_start();
 }
 // require 'library/library.php';
-require 'view.php';
+include 'view.php';
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
