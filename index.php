@@ -15,6 +15,6 @@ if (isset($_POST['action'])) {
 }
 
 if ($action == 'home') {
-  $main = 'home';
+  $main = "home";
 }
  ?>
