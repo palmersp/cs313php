@@ -4,7 +4,8 @@ if(!$_SESSION){
    session_start();
 }
 // require 'library/library.php';
-include 'view.php';
+// include 'view.php';
+
 
 if (isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -15,6 +16,8 @@ if (isset($_POST['action'])) {
 }
 
 if ($action == 'home') {
-  $main = "home";
+  $main = 'home';
+  include 'view.php';
+
 }
  ?>
