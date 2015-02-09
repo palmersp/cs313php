@@ -16,7 +16,7 @@
         </header>
         <main role="main">
             <div class="container main <?php echo $main ?>">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/main/'. $main . '.php'; ?>
+                <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/'. $main . '.php'; ?>
             </div>
          </main>
 
