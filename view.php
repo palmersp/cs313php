@@ -16,7 +16,15 @@
         </header>
         <main role="main">
             <div class="container main <?php echo $main ?>">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/'. $main . '.php'; ?>
+                <?php if(isset($mainAbove)){
+                   echo $mainAbove;
+                   } ?>
+
+                <?php include $_SERVER['DOCUMENT_ROOT'] . $main; ?>
+
+                <?php if(isset($mainBelow)){
+                  echo $mainBelow;
+                  } ?>
             </div>
          </main>
 
