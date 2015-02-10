@@ -16,14 +16,13 @@ if (isset($_POST['action'])) {
 }
 
 if ($action == 'home') {
-  $main = 'main/home';
+  $main = '/modules/main/home.php';
   include 'view.php';
 }
 else if ($action == 'main_nav') {
   if ($_GET['id'] == 'assignments') {
-    $main = 'main/assignments';
+    $main = '/assignments/assignments.php';
     include 'view.php';
-
   }
 
 }

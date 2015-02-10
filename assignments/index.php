@@ -1,44 +1,34 @@
-<!DOCTYPE html>
-<html>
-    <head lang="en">
-        <meta charset="UTF-8">
-        <title>Assignments</title>
-        <meta name="author" content="Spencer Palmer">
-        <meta name="description" content="Personal portfolio website of Spencer Palmer">
-        <link href="/css/screen.css" type="text/css" rel="stylesheet" media="screen">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/head.php'; ?>
-    </head>
-    <body>
-        <div class="site_container clearfix">
-        <header class="clearfix" role="banner">
-            <div class="container header">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/header.php'; ?>
+<?php
 
-                <nav class="main_nav clearfix" role="navigation">
-                    <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/main_nav.php'; ?>
-                </nav>
-            </div>
-        </header>
-        <main role="main">
-            <div class="container main clearfix">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/main/home.php'; ?>
-                <h2>Assignments</h2>
-                <a href="/assignments/survey.php">Survey</a>
-            </div>
-         </main>
+if(!$_SESSION){
+   session_start();
+}
+
+if (isset($_POST['action'])) {
+    $action = $_POST['action'];
+} else if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+}
+
+if($action == 'survey') {
+  if (isset($_SESSION['vote'])) {
+    $main = '/assignments/results.php';
+    include '../view.php';
+  }
+  else{
+    $main = '/assignments/questions.php';
+    include '../view.php';
+  }
+}
+elseif($action == 'Submit Survey'){
+  $iceCream = $_POST['iceCream'];
+  $seasons = $_POST['seasons'];
+  $building = $_POST['building'];
+  $subject = $_POST['subject'];
+  $_SESSION['vote'] = TRUE;
+  $main = '/assignments/results.php';
+  include '../view.php';
+}
 
 
-            <footer class="clearfix" role="contentinfo">
-            <div class=" container footer clearfix">
-                <?php include $_SERVER['DOCUMENT_ROOT'] . '/modules/footer.php'; ?>
-
-                <?php
-                // outputs e.g. 'Last modified: March 04 1998 20:43:59.'
-                echo "Last modified: " . date ("F d Y H:i:s.", getlastmod());
-                ?>
-            </div>
-        </footer>
-        </div>
-    </body>
-</html>
+?>
