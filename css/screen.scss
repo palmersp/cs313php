@@ -82,10 +82,11 @@ header[role=banner]{
      h1{
        margin: 0;
      }
-     img{
+     svg{
      width: 200px;
      display: block;
      margin: 0 auto;
+     fill: $background;
     }
  }
 
@@ -93,16 +94,20 @@ header[role=banner]{
 
  .main_nav[role=navigation] {
    ul{
+     display: -webkit-flex;
+     display: flex;
+     -webkit-flex-direction: row;
+     flex-direction: row;
+     -webkit-align-items: center;
+     align-items: center ;
+     -webkit-justify-content: center;
+     justify-content: center;
      padding: 0;
-     width: 261px;
      margin: 0 auto;
-   li {
-     display: inline;
-
    a{
      padding: 10px 7px 10px;
 
-     margin: 8px 4px;
+     margin: 8px 25px;
      /*padding: 1em;*/
      cursor: pointer;
      background: #f1f1f1;
@@ -124,7 +129,6 @@ header[role=banner]{
        background: none;
        color: #fff;
      }
-   }
    }
    }
  }
