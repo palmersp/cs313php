@@ -418,39 +418,45 @@ header[role=banner] {
   color: white; }
   header[role=banner] h1 {
     margin: 0; }
-  header[role=banner] img {
+  header[role=banner] svg {
     width: 200px;
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto;
+    fill: #ecf0f1; }
 
 /*Main Navigation Styles********************************************************/
 .main_nav[role=navigation] ul {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
   padding: 0;
-  width: 261px;
   margin: 0 auto; }
-  .main_nav[role=navigation] ul li {
-    display: inline; }
-    .main_nav[role=navigation] ul li a {
-      padding: 10px 7px 10px;
-      margin: 8px 4px;
-      /*padding: 1em;*/
-      cursor: pointer;
-      background: #f1f1f1;
-      text-decoration: none;
-      color: #2ecc71;
-      -webkit-tap-highlight-color: transparent;
-      display: inline-block;
-      -webkit-transition-duration: 0.3s;
-      transition-duration: 0.3s;
-      -webkit-transition-property: background;
-      transition-property: background;
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-      box-shadow: inset 0 0 0 4px #f1f1f1, 0 0 1px transparent;
-      /* Hack to improve aliasing on mobile/tablet devices */ }
-      .main_nav[role=navigation] ul li a:hover, .main_nav[role=navigation] ul li a:focus, .main_nav[role=navigation] ul li a:active {
-        background: none;
-        color: #fff; }
+  .main_nav[role=navigation] ul a {
+    padding: 10px 7px 10px;
+    margin: 8px 25px;
+    /*padding: 1em;*/
+    cursor: pointer;
+    background: #f1f1f1;
+    text-decoration: none;
+    color: #2ecc71;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: background;
+    transition-property: background;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    box-shadow: inset 0 0 0 4px #f1f1f1, 0 0 1px transparent;
+    /* Hack to improve aliasing on mobile/tablet devices */ }
+    .main_nav[role=navigation] ul a:hover, .main_nav[role=navigation] ul a:focus, .main_nav[role=navigation] ul a:active {
+      background: none;
+      color: #fff; }
 
 /*******************************************************************************/
 /*******************************************************************************/
