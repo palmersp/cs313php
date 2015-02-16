@@ -26,4 +26,11 @@ else if ($action == 'main_nav') {
   }
 
 }
+else if ($action == 'calendar') {
+  $date = getdate();
+  $month = $date['month'];
+  $year = $date['year'];
+  $main = '/calendar/drawCalendar.php';
+  include 'view.php';
+}
 ?>
