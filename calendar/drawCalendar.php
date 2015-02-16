@@ -1,54 +1,18 @@
 <?php
 
-try {
-    require $_SERVER['DOCUMENT_ROOT'] . '/model/model.php';
-} catch (Exception $exc) {
-    header('location: /errordocs/501.php');
-    exit();
-}
+// try {
+//     require $_SERVER['DOCUMENT_ROOT'] . '/model/model.php';
+// } catch (Exception $exc) {
+//     header('location: /errordocs/501.php');
+//     exit();
+// }
 
 // Credit for much of this function goes to David Walsh at davidwalsh.name/php-calendar
 
 /* draws a calendar */
 function draw_calendar($month,$year){
-  switch ($month) {
-    case 'January':
-      $month = 1;
-      break;
-    case 'February':
-      $month = 2;
-      break;
-    case 'March':
-      $month = 3;
-      break;
-    case 'April':
-      $month = 4;
-      break;
-    case 'May':
-      $month = 5;
-      break;
-    case 'June':
-      $month = 6;
-      break;
-    case 'July':
-      $month = 7;
-      break;
-    case 'August':
-      $month = 8;
-      break;
-    case 'September':
-      $month = 9;
-      break;
-    case 'October':
-      $month = 10;
-      break;
-    case 'November':
-      $month = 11;
-      break;
-    case 'December':
-      $month = 12;
-      break;
-  }
+
+  $month = monthToInt($month);
   /* draw table */
   $calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
 
@@ -115,7 +79,62 @@ function draw_calendar($month,$year){
 
 
 
-echo '<h2>'.$month.' '.$year.'</h2>';
+echo '<h2>'.monthToString($month).' '.$year.'</h2>';
 echo draw_calendar($month, $year);
-
+echo 'Thanks for registering! You will recieve a confirmation email when you are approved.<br><br><br>';
 ?>
+
+<form action="/" method="post">
+  <fieldset>
+  <legend>Please Fill Out All Fields That Say Required</legend>
+    <label for="firstname">First Name</label><br>
+    <input type="text" name="firstname" size="30" placeholder="Required" value="<?php if(isset($firstname)){ echo $firstname;} ?>" REQUIRED><br>
+    <label for="lastname">Last Name</label><br>
+    <input type="text" name="lastname" size="30" placeholder="Required" value="<?php if(isset($lastname)){ echo $lastname;} ?>" REQUIRED>
+
+    <h2>Please Select the Month</h2>
+    <input type="radio" name="month" value="January" REQUIRED>
+    <label for="January">January</label><br><br>
+    <input type="radio" name="month" value="February" REQUIRED>
+    <label for="February">February</label><br><br>
+    <input type="radio" name="month" value="March" REQUIRED>
+    <label for="March">March</label><br><br>
+    <input type="radio" name="month" value="April" REQUIRED>
+    <label for="April">April</label><br><br>
+    <input type="radio" name="month" value="May" REQUIRED>
+    <label for="May">May</label><br><br>
+    <input type="radio" name="month" value="June" REQUIRED>
+    <label for="June">June</label><br><br>
+
+    <h2>Please Select The Year</h2>
+    <input type="radio" name="year" value="2015" REQUIRED>
+    <label for="2015">2015</label><br>
+
+    <h2>Please Select The Day</h2>
+    <input type="radio" name="day" value="1" REQUIRED>
+    <label for="1">1</label><br>
+
+    <h2>Comments or Concerns?</h2>
+    <textarea name="message" rows="8" cols="50" REQUIRED>
+      <?php if(isset($message)){ echo $message;} ?>
+    </textarea>
+
+    <h2>Contact Information</h2>
+    <label for="emailAddress">Email Address</label><br>
+    <input type="text" name="emailAddress" size="30" placeholder="Required" value="<?php if(isset($emailAddress)){ echo $emailAddress;} ?>" REQUIRED><br>
+    <label for="phoneNumber">Phone Number</label><br>
+    <input type="text" name="phoneNumber" size="10" placeholder="Required" value="<?php if(isset($phoneNumber)){ echo $phoneNumber;} ?>" REQUIRED><br>
+    <label for="lineOne">Address</label><br>
+    <input type="text" name="lineOne" size="30" placeholder="Required" value="<?php if(isset($lineOne)){ echo $lineOne;} ?>" REQUIRED><br>
+    <label for="lineTwo"></label><br>
+    <input type="text" name="lineTwo" size="30" placeholder="" value="<?php if(isset($lineTwo)){ echo $lineTwo;} ?>"><br>
+    <label for="city">City</label><br>
+    <input type="text" name="city" size="30" placeholder="Required" value="<?php if(isset($city)){ echo $city;} ?>" REQUIRED><br>
+    <label for="state">State</label><br>
+    <input type="text" name="state" size="30" placeholder="Required" value="<?php if(isset($state)){ echo $state;} ?>" REQUIRED><br>
+    <label for="zipcode">Zip Code</label><br>
+    <input type="text" name="zipcode" size="30" placeholder="Required" value="<?php if(isset($zipcode)){ echo $zipcode;} ?>" REQUIRED><br>
+
+    <input type="submit" name="action" value="Reserve">
+  </fieldset>
+</form>

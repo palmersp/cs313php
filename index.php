@@ -3,6 +3,14 @@
 if(!$_SESSION){
    session_start();
 }
+
+try {
+    require $_SERVER['DOCUMENT_ROOT'] . '/model/model.php';
+} catch (Exception $exc) {
+    header('location: /errordocs/501.php');
+    exit();
+}
+
 // require 'library/library.php';
 // include 'view.php';
 
@@ -32,5 +40,44 @@ else if ($action == 'calendar') {
   $year = $date['year'];
   $main = '/calendar/drawCalendar.php';
   include 'view.php';
+}
+else if ($action == 'Reserve') {
+  $firstname = $_POST['firstname'];
+  $lastname = $_POST['lastname'];
+
+  $insertClient = insertClient($firstname, $lastname);
+
+  $month = monthToInt($_POST['month']);
+  $year = $_POST['year'];
+  $day = $_POST['day'];
+
+  $clientId = getLastClientId();
+
+  $insertDay = insertDay($month, $year, $day, $insertClient);
+
+  $message = $_POST['message'];
+
+  // $date = getdate();
+
+  $insertMessage = insertMessage($insertClient, $message);
+
+  $emailAddress = $_POST['emailAddress'];
+  $phoneNumber = $_POST['phoneNumber'];
+  $lineOne = $_POST['lineOne'];
+  $lineTwo = $_POST['lineTwo'];
+  $city = $_POST['city'];
+  $state = $_POST['state'];
+  $zipcode = $_POST['zipcode'];
+
+  $insertContact = insertContact($insertClient, $emailAddress, $phoneNumber, $lineOne, $lineTwo, $city, $state, $zipcode);
+
+
+  // $date = getdate();
+  // $month = $date['month'];
+  // $year = $date['year'];
+  $main = '/calendar/drawCalendar.php';
+  include 'view.php';
+
+
 }
 ?>
