@@ -1,5 +1,12 @@
 <?php
 
+try {
+    require $_SERVER['DOCUMENT_ROOT'] . '/model/model.php';
+} catch (Exception $exc) {
+    header('location: /errordocs/501.php');
+    exit();
+}
+
 // Credit for much of this function goes to David Walsh at davidwalsh.name/php-calendar
 
 /* draws a calendar */
@@ -66,14 +73,17 @@ function draw_calendar($month,$year){
   endfor;
 
   /* keep going with days.... */
-  for($list_day = 1; $list_day <= $days_in_month; $list_day++):
+  for($day = 1; $day <= $days_in_month; $day++):
     $calendar.= '<td class="calendar-day">';
       /* add in the day number */
-      $calendar.= '<div class="day-number">'.$list_day.'</div>';
+      $calendar.= '<div class="day-number">'.$day.'</div>';
 
       /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
-      $calendar.= str_repeat('<p> </p>',2);
 
+    $data =  getReservations($month, $year, $day);
+    if(isset($data['day_id']) && $data['approved'] == 'y'){
+      $calendar.= str_repeat('<p>Day is Reserved</p>',1);
+    }
     $calendar.= '</td>';
     if($running_day == 6):
       $calendar.= '</tr>';
@@ -102,17 +112,10 @@ function draw_calendar($month,$year){
   /* all done, return result */
   return $calendar;
 }
+
+
+
 echo '<h2>'.$month.' '.$year.'</h2>';
 echo draw_calendar($month, $year);
-
-// echo '<h2>'.$month.' '.$year.'</h2>';
-// echo draw_calendar($month, $year);
-
-/* sample usages */
-// echo '<h2>July 2009</h2>';
-// echo draw_calendar(7,2009);
-//
-// echo '<h2>August 2009</h2>';
-// echo draw_calendar(8,2009);
 
 ?>
