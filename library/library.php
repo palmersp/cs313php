@@ -5,8 +5,8 @@ function conPHP() {
 
     if ($openShiftVar === null || $openShiftVar == "")
     {
-         // Not in the openshift environment 
-         require("local.php");
+         // Not in the openshift environment
+         require 'local.php';
     }
     else
     {
