@@ -2,9 +2,10 @@
 function conPHP() {
 
     $server = '';
-    $database= '';
+    $database= 'php';
     $username = '';
     $password = '';
+    
     
     $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
