@@ -1,6 +1,11 @@
 <?php
 function conPHP() {
 
+    $server = '';
+    $database= '';
+    $username = '';
+    $password = '';
+    
     $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
     if ($openShiftVar === null || $openShiftVar == "")
