@@ -51,7 +51,7 @@ else if ($action == 'Reserve') {
   $year = $_POST['year'];
   $day = $_POST['day'];
 
-  $clientId = getLastClientId();
+  // $clientId = getLastClientId();
 
   $insertDay = insertDay($month, $year, $day, $insertClient);
 
@@ -71,13 +71,27 @@ else if ($action == 'Reserve') {
 
   $insertContact = insertContact($insertClient, $emailAddress, $phoneNumber, $lineOne, $lineTwo, $city, $state, $zipcode);
 
+  unset($firstname);
+  unset($lastname);
+  unset($insertClient);
+  unset($day);
+  unset($message);
+  unset($emailAddress);
+  unset($phoneNumber);
+  unset($lineOne);
+  unset($lineTwo);
+  unset($city);
+  unset($state);
+  unset($zipcode);
 
-  // $date = getdate();
-  // $month = $date['month'];
-  // $year = $date['year'];
+  $thanks = 'Thanks for registering! You will recieve a confirmation email when you are approved.<br><br><br>';
   $main = '/calendar/drawCalendar.php';
   include 'view.php';
-
-
+}
+else if ($action == 'Change Month') {
+  $month = $_POST['month'];
+  $year = $_POST['year'];
+  $main = '/calendar/drawCalendar.php';
+  include 'view.php';
 }
 ?>
