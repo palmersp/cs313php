@@ -1,11 +1,23 @@
 <?php
 function conPHP() {
-    $server = getenv('OPENSHIFT_MYSQL_DB_HOST');
-    // $database = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-    $database = 'php';
-    $username = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
-    $password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
-    $dsn = "mysql:host=$server; dbname=$database";
+
+    $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
+
+    if ($openShiftVar === null || $openShiftVar == "")
+    {
+         // Not in the openshift environment 
+         require("local.php");
+    }
+    else
+    {
+         // In the openshift environment
+         $server = getenv('OPENSHIFT_MYSQL_DB_HOST');
+         // $database = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+         $database = 'php';
+         $username = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+         $password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+    }
+
     $option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
     try {
@@ -16,6 +28,7 @@ function conPHP() {
     }
     return $conPHP;
 }
+
 
 function monthToInt($month){
   switch ($month) {
