@@ -1,12 +1,4 @@
 <?php
-
-// try {
-//     require $_SERVER['DOCUMENT_ROOT'] . '/model/model.php';
-// } catch (Exception $exc) {
-//     header('location: /errordocs/501.php');
-//     exit();
-// }
-
 // Credit for much of this function goes to David Walsh at davidwalsh.name/php-calendar
 
 /* draws a calendar */
@@ -106,13 +98,8 @@ function draw_calendar($month,$year){
 <input type="submit" name="action" value="Change Month">
 </form>
 
-<!-- <form action="/" method="post">
-  <input type="submit" name="action" value="Last"> -->
-  <!-- <input type="hidden" name="action" value="<?php $month ?>"/> -->
-  <!-- <input type="submit" name="action" value="Next">
-</form> -->
-
 <?php
+$days_in_month = date('t',mktime(0,0,0, monthToInt($month),1,$year));
 echo '<h2>'.monthToString($month).' '.$year.'</h2>';
 echo draw_calendar($month, $year);
 if (isset($thanks)) {echo $thanks; } ;
@@ -135,44 +122,17 @@ if (isset($thanks)) {echo $thanks; } ;
     <label for="<?php echo $year ?>"><?php echo $year ?></label><br>
 
     <h2>Please Select The Day</h2>
-    <select name="day">
-      <option value="1" REQUIRED>1</option>
-      <option value="2" REQUIRED>2</option>
-      <option value="3" REQUIRED>3</option>
-      <option value="4" REQUIRED>4</option>
-      <option value="5" REQUIRED>5</option>
-      <option value="6" REQUIRED>6</option>
-      <option value="7" REQUIRED>7</option>
-      <option value="8" REQUIRED>8</option>
-      <option value="9" REQUIRED>9</option>
-      <option value="10" REQUIRED>10</option>
-      <option value="11" REQUIRED>11</option>
-      <option value="12" REQUIRED>12</option>
-      <option value="13" REQUIRED>13</option>
-      <option value="14" REQUIRED>14</option>
-      <option value="15" REQUIRED>15</option>
-      <option value="16" REQUIRED>16</option>
-      <option value="17" REQUIRED>17</option>
-      <option value="18" REQUIRED>18</option>
-      <option value="19" REQUIRED>19</option>
-      <option value="20" REQUIRED>20</option>
-      <option value="21" REQUIRED>21</option>
-      <option value="22" REQUIRED>22</option>
-      <option value="23" REQUIRED>23</option>
-      <option value="24" REQUIRED>24</option>
-      <option value="25" REQUIRED>25</option>
-      <option value="26" REQUIRED>26</option>
-      <option value="27" REQUIRED>27</option>
-      <option value="28" REQUIRED>28</option>
-      <option value="29" REQUIRED>29</option>
-      <option value="30" REQUIRED>30</option>
-      <option value="31" REQUIRED>31</option>
-    </select>
+    <?php
+      $selectDays = '<select name="day">';
+      for($day = 1; $day <= $days_in_month; $day++) {
+        $selectDays .= '<option value="'.$day.'" REQUIRED>'.$day.'</option>';
+      }
+      $selectDays .= '</select>';
+      echo $selectDays;
+    ?>
 
     <h2>Comments or Concerns?</h2>
-    <textarea name="message" rows="8" cols="50" REQUIRED>
-      <?php if(isset($message)){ echo $message;} ?>
-    </textarea>
+    <textarea name="message" rows="8" cols="50" placeholder="Comments" REQUIRED><?php if(isset($message)){ echo $message;} ?></textarea>
 
     <h2>Contact Information</h2>
     <label for="emailAddress">Email Address</label><br>
