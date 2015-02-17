@@ -10,7 +10,7 @@ function conPHP() {
     try {
         $conPHP = new PDO($dsn, $username, $password, $option);
     } catch (PDOException $exc) {
-        header('location: /errordocs/500.php');
+        header('location: /errordocs/502.php');
         exit;
     }
     return $conPHP;
