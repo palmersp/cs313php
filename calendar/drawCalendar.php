@@ -77,11 +77,45 @@ function draw_calendar($month,$year){
   return $calendar;
 }
 
+?>
 
+<h2>Select the Month</h2>
+<form action="/" method="post">
 
+<select name="month">
+  <option value="January" <?php if ($month == 'January' ) { echo 'SELECTED';} ?> REQUIRED>January</option>
+  <option value="February" <?php if ($month == 'February' ) { echo 'SELECTED';} ?> REQUIRED>February</option>
+  <option value="March" <?php if ($month == 'March' ) { echo 'SELECTED';} ?> REQUIRED>March</option>
+  <option value="April" <?php if ($month == 'April' ) { echo 'SELECTED';} ?> REQUIRED>April</option>
+  <option value="May" <?php if ($month == 'May' ) { echo 'SELECTED';} ?> REQUIRED>May</option>
+  <option value="June" <?php if ($month == 'June' ) { echo 'SELECTED';} ?> REQUIRED>June</option>
+  <option value="July" <?php if ($month == 'July' ) { echo 'SELECTED';} ?> REQUIRED>July</option>
+  <option value="August" <?php if ($month == 'August' ) { echo 'SELECTED';} ?> REQUIRED>August</option>
+  <option value="September" <?php if ($month == 'September' ) { echo 'SELECTED';} ?> REQUIRED>September</option>
+  <option value="October" <?php if ($month == 'October' ) { echo 'SELECTED';} ?> REQUIRED>October</option>
+  <option value="November" <?php if ($month == 'November' ) { echo 'SELECTED';} ?> REQUIRED>November</option>
+  <option value="December" <?php if ($month == 'December' ) { echo 'SELECTED';} ?> REQUIRED>December</option>
+</select>
+
+<h2>Select The Year</h2>
+<input type="radio" name="year" value="2015" <?php if ($year == '2015' ) { echo 'CHECKED';} ?> REQUIRED>
+<label for="2015">2015</label><br>
+<input type="radio" name="year" value="2016" <?php if ($year == '2016' ) { echo 'CHECKED';} ?> REQUIRED>
+<label for="2016">2016</label><br>
+
+<input type="submit" name="action" value="Change Month">
+</form>
+
+<!-- <form action="/" method="post">
+  <input type="submit" name="action" value="Last"> -->
+  <!-- <input type="hidden" name="action" value="<?php $month ?>"/> -->
+  <!-- <input type="submit" name="action" value="Next">
+</form> -->
+
+<?php
 echo '<h2>'.monthToString($month).' '.$year.'</h2>';
 echo draw_calendar($month, $year);
-echo 'Thanks for registering! You will recieve a confirmation email when you are approved.<br><br><br>';
+if (isset($thanks)) {echo $thanks; } ;
 ?>
 
 <form action="/" method="post">
@@ -92,27 +126,48 @@ echo 'Thanks for registering! You will recieve a confirmation email when you are
     <label for="lastname">Last Name</label><br>
     <input type="text" name="lastname" size="30" placeholder="Required" value="<?php if(isset($lastname)){ echo $lastname;} ?>" REQUIRED>
 
-    <h2>Please Select the Month</h2>
-    <input type="radio" name="month" value="January" REQUIRED>
-    <label for="January">January</label><br><br>
-    <input type="radio" name="month" value="February" REQUIRED>
-    <label for="February">February</label><br><br>
-    <input type="radio" name="month" value="March" REQUIRED>
-    <label for="March">March</label><br><br>
-    <input type="radio" name="month" value="April" REQUIRED>
-    <label for="April">April</label><br><br>
-    <input type="radio" name="month" value="May" REQUIRED>
-    <label for="May">May</label><br><br>
-    <input type="radio" name="month" value="June" REQUIRED>
-    <label for="June">June</label><br><br>
+    <h2>Selected Month</h2>
+    <input type="radio" name="month" value="<?php echo $month ?>" CHECKED REQUIRED>
+    <label for="<?php echo $month ?>"><?php echo $month?></label><br>
 
-    <h2>Please Select The Year</h2>
-    <input type="radio" name="year" value="2015" REQUIRED>
-    <label for="2015">2015</label><br>
+    <h2>Selected Year</h2>
+    <input type="radio" name="year" value="<?php echo $year ?>" CHECKED REQUIRED>
+    <label for="<?php echo $year ?>"><?php echo $year ?></label><br>
 
     <h2>Please Select The Day</h2>
-    <input type="radio" name="day" value="1" REQUIRED>
-    <label for="1">1</label><br>
+    <select name="day">
+      <option value="1" REQUIRED>1</option>
+      <option value="2" REQUIRED>2</option>
+      <option value="3" REQUIRED>3</option>
+      <option value="4" REQUIRED>4</option>
+      <option value="5" REQUIRED>5</option>
+      <option value="6" REQUIRED>6</option>
+      <option value="7" REQUIRED>7</option>
+      <option value="8" REQUIRED>8</option>
+      <option value="9" REQUIRED>9</option>
+      <option value="10" REQUIRED>10</option>
+      <option value="11" REQUIRED>11</option>
+      <option value="12" REQUIRED>12</option>
+      <option value="13" REQUIRED>13</option>
+      <option value="14" REQUIRED>14</option>
+      <option value="15" REQUIRED>15</option>
+      <option value="16" REQUIRED>16</option>
+      <option value="17" REQUIRED>17</option>
+      <option value="18" REQUIRED>18</option>
+      <option value="19" REQUIRED>19</option>
+      <option value="20" REQUIRED>20</option>
+      <option value="21" REQUIRED>21</option>
+      <option value="22" REQUIRED>22</option>
+      <option value="23" REQUIRED>23</option>
+      <option value="24" REQUIRED>24</option>
+      <option value="25" REQUIRED>25</option>
+      <option value="26" REQUIRED>26</option>
+      <option value="27" REQUIRED>27</option>
+      <option value="28" REQUIRED>28</option>
+      <option value="29" REQUIRED>29</option>
+      <option value="30" REQUIRED>30</option>
+      <option value="31" REQUIRED>31</option>
+    </select>
 
     <h2>Comments or Concerns?</h2>
     <textarea name="message" rows="8" cols="50" REQUIRED>

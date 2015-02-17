@@ -3,7 +3,7 @@ function conPHP() {
     $server = '';
     $database = '';
     $username = '';
-    $password = ;
+    $password = '';
     $dsn = "mysql:host=$server; dbname=$database";
     $option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
