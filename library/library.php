@@ -1,12 +1,7 @@
 <?php
 function conPHP() {
 
-    $server = '';
-    $database= 'php';
-    $username = '';
-    $password = '';
-    
-    
+
     $openShiftVar = getenv('OPENSHIFT_MYSQL_DB_HOST');
 
     if ($openShiftVar === null || $openShiftVar == "")
@@ -22,6 +17,7 @@ function conPHP() {
          $database = 'php';
          $username = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
          $password = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+         $dsn = "mysql:host=$server; dbname=$database";
     }
 
     $option = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
