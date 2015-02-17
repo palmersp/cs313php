@@ -32,6 +32,10 @@ else if ($action == 'main_nav') {
     $main = '/assignments/assignments.php';
     include 'view.php';
   }
+  else if ($_GET['id'] == 'login') {
+    $main = '/calendar/admin.php';
+    include 'view.php';
+  }
 
 }
 else if ($action == 'calendar') {
