@@ -31,6 +31,61 @@ function getLastClientId() {
 
 }
 
+
+function login($username, $password) {
+  $conPHP = conPHP();
+  $sql = 'SELECT * FROM admin WHERE email_address = :email_address AND password = :password';
+  $stmt = $conPHP->prepare($sql);
+  $stmt->bindValue(':email_address', $username);
+  $stmt->bindValue(':password', $password);
+  $stmt->execute();
+  $credentials = $stmt->fetch();
+  $stmt->closeCursor();
+
+  if ($username == $credentials['email_address'] && $password == $credentials['password']){
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+function pendingApproval(){
+  $conPHP = conPHP();
+  $sql = 'SELECT * FROM day d JOIN client c ON d.client_id = c.client_id JOIN contact co'
+  .' ON c.client_id = co.client_id JOIN reservation_comment rc ON co.client_id = rc.client_id'
+  .' WHERE d.approved IS NULL';
+  $stmt = $conPHP->prepare($sql);
+  // $stmt->bindValue(':day_id', $day_id);
+  $stmt->execute();
+  $pending = $stmt->fetch();
+  $stmt->closeCursor();
+  return $pending;
+}
+
+function pendingApprovalAll($day_id){
+  $conPHP = conPHP();
+  $sql = 'SELECT * FROM day d JOIN client c ON d.client_id = c.client_id JOIN contact co'
+  .' ON c.client_id = co.client_id JOIN reservation_comment rc ON co.client_id = rc.client_id'
+  .' WHERE d.day_id = :day_id';
+  $stmt = $conPHP->prepare($sql);
+  $stmt->bindValue(':day_id', $day_id);
+  $stmt->execute();
+  $pending = $stmt->fetch();
+  $stmt->closeCursor();
+  return $pending;
+}
+function getDayId() {
+  $conPHP = conPHP();
+  $sql = 'SELECT * FROM day WHERE day_id = (SELECT MAX(day_id) FROM day) LIMIT 1';
+  $statement = $conPHP->prepare($sql);
+  $statement->execute();
+  $dayId = $statement->fetch();
+  $statement->closeCursor();
+  return $dayId;
+
+}
+
 function insertClient($firstname, $lastname) {
   $conPHP = conPHP();
   $sql = 'INSERT INTO client (first_name, last_name) VALUES (:first_name, :last_name)';
@@ -112,4 +167,5 @@ function insertContact($clientId, $emailAddress, $phoneNumber, $lineOne, $lineTw
       return FALSE;
   }
 }
+
 ?>

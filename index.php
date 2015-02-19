@@ -42,6 +42,21 @@ else if ($action == 'login') {
   $main = '/calendar/admin.php';
   include 'view.php';
 }
+else if ($action == 'Submit') {
+  $username = $_POST['username'];
+  $password = $_POST['password'];
+
+  $login = login($username, $password);
+  if ($login) {
+    $_SESSION['admin'] = TRUE;
+    // $pending = pendingApproval();
+    $main = '/calendar/approve.php';
+    include 'view.php';
+  }
+}
+else if ($action == 'Submit Decision'){
+  $decision = $_POST['decision'];
+}
 else if ($action == 'calendar') {
   $date = getdate();
   $month = $date['month'];
