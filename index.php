@@ -39,8 +39,13 @@ else if ($action == 'main_nav') {
 
 }
 else if ($action == 'login') {
+  if ($_SESSION['admin'] == TRUE) {
+    $main = '/calendar/approve.php';
+    include 'view.php';
+  } else {
   $main = '/calendar/admin.php';
   include 'view.php';
+  }
 }
 else if ($action == 'Submit') {
   $username = $_POST['username'];
@@ -56,6 +61,24 @@ else if ($action == 'Submit') {
 }
 else if ($action == 'Submit Decision'){
   $decision = $_POST['decision'];
+  // $y = stripos($decision, 'n');
+
+  // if ($y) {
+  //   echo 'approved';
+  // } else {
+  //   echo 'sorry';
+  // }
+
+  $seperate = strpos($decision, ' ');
+  $yN = substr($decision, 0, $seperate);
+  $client_id = substr($decision, $seperate+1);
+  // echo $yN;
+  // echo $client_id;
+  $approvalDecision = approvalDecision($yN, $client_id);
+  $main = '/calendar/approve.php';
+  include 'view.php';
+
+  // echo $decision;
 }
 else if ($action == 'calendar') {
   $date = getdate();

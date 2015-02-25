@@ -15,8 +15,8 @@
             </div>
         </header>
         <main role="main">
-            <div class="container main <?php echo $main ?>">
-              <img src="/media/images/maldives1920.jpg">
+            <div class="container main">
+              <!-- <img src="/media/images/maldives1920.jpg"> -->
                 <?php if(isset($mainAbove)){
                    echo $mainAbove;
                    } ?>

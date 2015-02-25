@@ -168,4 +168,21 @@ function insertContact($clientId, $emailAddress, $phoneNumber, $lineOne, $lineTw
   }
 }
 
+function approvalDecision($yN, $client_id) {
+  $conPHP = conPHP();
+  $sql = 'UPDATE day SET approved = :approved WHERE client_id = :client_id';
+  $stmt = $conPHP->prepare($sql);
+  $stmt->bindValue(':approved', $yN);
+  $stmt->bindValue(':client_id', $client_id);
+  $stmt->execute();
+  $insertResult = $conPHP->lastInsertId();
+  $stmt->closeCursor();
+
+  if($insertResult > 0) {
+      return TRUE;
+  } else {
+      return FALSE;
+  }
+}
+
 ?>
