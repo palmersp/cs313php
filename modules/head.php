@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<title><?php echo $main; ?></title>
+<title>Calendar App</title>
 <meta name="author" content="Spencer Palmer">
 <meta name="description" content="Personal portfolio website of Spencer Palmer">
 <link href="/css/screen.css" type="text/css" rel="stylesheet" media="screen">

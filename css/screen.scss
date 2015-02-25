@@ -10,7 +10,7 @@
 /*******************************************************************************/
 @import 'normalize';
 
-$contrast: #2ecc71;
+$contrast: #2c3e50;
 $background: #ecf0f1;
 
 /*******************************************************************************/
@@ -25,11 +25,16 @@ $background: #ecf0f1;
      box-sizing: border-box;
  }
  .site_container{
-     background-color: $background;
-    //  background-image: url('/media/images/cabin.jpg');
+   background-color: $background;
+  //  background-image: url('/media/images/cabin.jpg');
+  background-image: url('/media/images/beach-house.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 600px;
  }
  .container{
    max-width: 1280px;
+   margin: 0 auto;
  }
 
 /*Navigation styles*************************************************************/
@@ -133,6 +138,18 @@ header[role=banner]{
      }
    }
    }
+ }
+
+ /*Main**************************************************************************/
+ .main {
+   background-color: $background;
+   opacity: 0.95;
+   filter: alpha(opacity=95);
+   margin-top: 200px;
+ }
+
+ [role=contentinfo] {
+
  }
 
 /*******************************************************************************/
