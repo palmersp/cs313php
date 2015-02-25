@@ -398,7 +398,7 @@ img {
 /*******************************************************************************/
 .site_container {
   display: flex;
-  flex-direction: row; }
+  flex-direction: column; }
   .site_container [role=banner] {
     order: 1; }
   .site_container [role=main] {
