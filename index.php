@@ -47,6 +47,11 @@ else if ($action == 'login') {
   include 'view.php';
   }
 }
+else if ($action == 'logout') {
+  unset($_SESSION['admin']);
+  $main = '/calendar/admin.php';
+  include 'view.php';
+}
 else if ($action == 'Submit') {
   $username = $_POST['username'];
   $password = $_POST['password'];
