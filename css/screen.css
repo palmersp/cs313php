@@ -1,21 +1,21 @@
 /*
-Error: Invalid CSS after "": expected selector, was "<<<<<<< HEAD"
-        on line 213 of screen.scss
+Error: Invalid CSS after "": expected selector, was "======="
+        on line 303 of screen.scss
 
-208:   padding:5px;
-209:   border-bottom:1px solid #999;
-210:   border-right:1px solid #999;
-211:   }
-212: 
-213: <<<<<<< HEAD
-214:   /*Form**************************************************************************\/
-215:   /* #### bootstrap Form #### *\/
-216:   .bootstrap-frm {
-217:       margin-left:auto;
-218:       margin-right:auto;
+298:   .bootstrap-frm .button:hover {
+299:       color: #333;
+300:       background-color: #EBEBEB;
+301:       border-color: #ADADAD;
+302:   }
+303: =======
+304: /*Form**************************************************************************\/
+305: /* #### bootstrap Form #### *\/
+306: .bootstrap-frm {
+307:     margin-left:auto;
+308:     margin-right:auto;
 
 Backtrace:
-screen.scss:213
+screen.scss:303
 C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/scss/parser.rb:1165:in `expected'
 C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/scss/parser.rb:1101:in `expected'
 C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/sass-3.4.10/lib/sass/scss/parser.rb:1081:in `expr!'
@@ -58,4 +58,4 @@ C:/Ruby21-x64/lib/ruby/gems/2.1.0/gems/listen-2.8.5/lib/listen/listener.rb:318:i
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Invalid CSS after \"\": expected selector, was \"<<<<<<< HEAD\"\A         on line 213 of screen.scss\A \A 208:   padding:5px;\A 209:   border-bottom:1px solid #999;\A 210:   border-right:1px solid #999;\A 211:   }\A 212: \A 213: <<<<<<< HEAD\A 214:   /*Form**************************************************************************/\A 215:   /* #### bootstrap Form #### */\A 216:   .bootstrap-frm {\A 217:       margin-left:auto;\A 218:       margin-right:auto;"; }
+  content: "Error: Invalid CSS after \"\": expected selector, was \"=======\"\A         on line 303 of screen.scss\A \A 298:   .bootstrap-frm .button:hover {\A 299:       color: #333;\A 300:       background-color: #EBEBEB;\A 301:       border-color: #ADADAD;\A 302:   }\A 303: =======\A 304: /*Form**************************************************************************/\A 305: /* #### bootstrap Form #### */\A 306: .bootstrap-frm {\A 307:     margin-left:auto;\A 308:     margin-right:auto;"; }
