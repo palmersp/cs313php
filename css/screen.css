@@ -375,10 +375,15 @@ th {
   box-sizing: border-box; }
 
 .site_container {
-  background-color: #ecf0f1; }
+  background-color: #ecf0f1;
+  background-image: url("/media/images/beach-house.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 600px; }
 
 .container {
-  max-width: 1280px; }
+  max-width: 1280px;
+  margin: 0 auto; }
 
 /*Navigation styles*************************************************************/
 [role=navigation] li {
@@ -414,7 +419,7 @@ img {
 /*Header styles*****************************************************************/
 header[role=banner] {
   /*min-height: 246px;*/
-  background-color: #2ecc71;
+  background-color: #2c3e50;
   color: white; }
   header[role=banner] h1 {
     margin: 0; }
@@ -443,7 +448,7 @@ header[role=banner] {
     cursor: pointer;
     background: #f1f1f1;
     text-decoration: none;
-    color: #2ecc71;
+    color: #2c3e50;
     -webkit-tap-highlight-color: transparent;
     display: inline-block;
     -webkit-transition-duration: 0.3s;
@@ -457,6 +462,13 @@ header[role=banner] {
     .main_nav[role=navigation] ul a:hover, .main_nav[role=navigation] ul a:focus, .main_nav[role=navigation] ul a:active {
       background: none;
       color: #fff; }
+
+/*Main**************************************************************************/
+.main {
+  background-color: #ecf0f1;
+  opacity: 0.95;
+  filter: alpha(opacity=95);
+  margin-top: 200px; }
 
 /*******************************************************************************/
 /*******************************************************************************/
