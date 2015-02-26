@@ -31,16 +31,35 @@ function draw_calendar($month,$year){
 
   /* keep going with days.... */
   for($day = 1; $day <= $days_in_month; $day++):
+    /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
+    $data =  getReservations($month, $year, $day);
+    if(isset($data['day_id']) && $data['approved'] == 'y'){
+      $calendar.= '<td class="calendar-day" style="background:red">';
+        /* add in the day number */
+        $calendar.= '<div class="day-number">'.$day.'</div>';
+        $calendar.= str_repeat('<p class="reserve">Reserved</p>',1);
+    }
+    else if(isset($data['day_id']) && ($data['approved'] == '' || $data['approved'] === NULL)){
+      $calendar.= '<td class="calendar-day" style="background:green">';
+        /* add in the day number */
+        $calendar.= '<div class="day-number">'.$day.'</div>';
+        $calendar.= str_repeat('<p class="reserve">Pending</p>',1);
+
+    }
+    else {
     $calendar.= '<td class="calendar-day">';
       /* add in the day number */
       $calendar.= '<div class="day-number">'.$day.'</div>';
-
+    }
       /** QUERY THE DATABASE FOR AN ENTRY FOR THIS DAY !!  IF MATCHES FOUND, PRINT THEM !! **/
 
-    $data =  getReservations($month, $year, $day);
-    if(isset($data['day_id']) && $data['approved'] == 'y'){
-      $calendar.= str_repeat('<p class="reserve">Reserved</p>',1);
-    }
+    // $data =  getReservations($month, $year, $day);
+    // if(isset($data['day_id']) && $data['approved'] == 'y'){
+    //   $calendar.= str_repeat('<p class="reserve">Reserved</p>',1);
+    // }
+    // if(isset($data['day_id']) && ($data['approved'] == '' || $data['approved'] === NULL)){
+    //   $calendar.= str_repeat('<p class="reserve">Pending</p>',1);
+    // }
     $calendar.= '</td>';
     if($running_day == 6):
       $calendar.= '</tr>';
@@ -71,6 +90,9 @@ function draw_calendar($month,$year){
 }
 
 ?>
+
+
+<?php if (isset($thanks)) {echo $thanks; } ; ?>
 <div class="calendarSelect">
 <form action="/" method="post">
 
@@ -103,7 +125,7 @@ function draw_calendar($month,$year){
 $days_in_month = date('t',mktime(0,0,0, monthToInt($month),1,$year));
 // echo '<h2>'.monthToString($month).' '.$year.'</h2>';
 echo draw_calendar($month, $year);
-if (isset($thanks)) {echo $thanks; } ;
+// if (isset($thanks)) {echo $thanks; } ;
 ?>
 </div>
 
@@ -124,10 +146,19 @@ if (isset($thanks)) {echo $thanks; } ;
     <label for="<?php echo $year ?>"><?php echo $year ?></label><br>
 
     <h2>Please Select The Day</h2>
+    <p>
+      Days that have been reserved or pending are not available to pick.
+    </p>
     <?php
       $selectDays = '<select name="day">';
       for($day = 1; $day <= $days_in_month; $day++) {
+        $data =  getReservations(monthToInt($month), $year, $day);
+        // if ($data['approved'] == '' || $data['approved'] === NULL || $data['approved'] == 'n') {
+        // if (!(isset($data['day_id']) && $data['day_id'] != 'n')) {
+        // if (isset($data['day_id']) && $data['day_id'] != 'n') {
+        if (!(isset($data['day_id'])) || $data['day_id'] == 'n') {
         $selectDays .= '<option value="'.$day.'" REQUIRED>'.$day.'</option>';
+      }
       }
       $selectDays .= '</select>';
       echo $selectDays;
