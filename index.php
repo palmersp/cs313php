@@ -59,6 +59,7 @@ else if ($action == 'Submit') {
   $login = login($username, $password);
   if ($login) {
     $_SESSION['admin'] = TRUE;
+    $_SESSION['id'] = $login;
     // $pending = pendingApproval();
     $main = '/calendar/approve.php';
     include 'view.php';
@@ -77,9 +78,10 @@ else if ($action == 'Submit Decision'){
   $seperate = strpos($decision, ' ');
   $yN = substr($decision, 0, $seperate);
   $client_id = substr($decision, $seperate+1);
+  $admin_id = $_SESSION['id'];
   // echo $yN;
   // echo $client_id;
-  $approvalDecision = approvalDecision($yN, $client_id);
+  $approvalDecision = approvalDecision($yN, $client_id, $admin_id);
   $main = '/calendar/approve.php';
   include 'view.php';
 

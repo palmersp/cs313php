@@ -43,7 +43,7 @@ function login($username, $password) {
   $stmt->closeCursor();
 
   if ($username == $credentials['email_address'] && $password == $credentials['password']){
-    return TRUE;
+    return $credentials['admin_id'];
   }
   else {
     return FALSE;
@@ -168,11 +168,12 @@ function insertContact($clientId, $emailAddress, $phoneNumber, $lineOne, $lineTw
   }
 }
 
-function approvalDecision($yN, $client_id) {
+function approvalDecision($yN, $client_id, $admin_id) {
   $conPHP = conPHP();
-  $sql = 'UPDATE day SET approved = :approved WHERE client_id = :client_id';
+  $sql = 'UPDATE day SET approved = :approved, admin_id = :admin_id WHERE client_id = :client_id';
   $stmt = $conPHP->prepare($sql);
   $stmt->bindValue(':approved', $yN);
+  $stmt->bindValue(':admin_id', $admin_id);
   $stmt->bindValue(':client_id', $client_id);
   $stmt->execute();
   $insertResult = $conPHP->lastInsertId();
