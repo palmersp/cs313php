@@ -7,10 +7,11 @@ function draw_calendar($month,$year){
   $month = monthToInt($month);
   /* draw table */
   $calendar = '<table cellpadding="0" cellspacing="0" class="calendar">';
+  $calendar .= '<caption>'.monthToString($month).' '.$year.'</caption>';
 
   /* table headings */
   $headings = array('Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday');
-  $calendar.= '<tr class="calendar-row"><td class="calendar-day-head">'.implode('</td><td class="calendar-day-head">',$headings).'</td></tr>';
+  $calendar.= '<tr class="calendar-row"><th class="calendar-day-head">'.implode('</th><th class="calendar-day-head">',$headings).'</th></tr>';
 
   /* days and weeks vars now ... */
   $running_day = date('w',mktime(0,0,0,$month,1,$year));
@@ -38,7 +39,7 @@ function draw_calendar($month,$year){
 
     $data =  getReservations($month, $year, $day);
     if(isset($data['day_id']) && $data['approved'] == 'y'){
-      $calendar.= str_repeat('<p>Day is Reserved</p>',1);
+      $calendar.= str_repeat('<p class="reserve">Reserved</p>',1);
     }
     $calendar.= '</td>';
     if($running_day == 6):
@@ -70,10 +71,10 @@ function draw_calendar($month,$year){
 }
 
 ?>
-
-<h2>Select the Month</h2>
+<div class="calendarSelect">
 <form action="/" method="post">
 
+<h2>Select the Month</h2>
 <select name="month">
   <option value="January" <?php if ($month == 'January' ) { echo 'SELECTED';} ?> REQUIRED>January</option>
   <option value="February" <?php if ($month == 'February' ) { echo 'SELECTED';} ?> REQUIRED>February</option>
@@ -100,10 +101,11 @@ function draw_calendar($month,$year){
 
 <?php
 $days_in_month = date('t',mktime(0,0,0, monthToInt($month),1,$year));
-echo '<h2>'.monthToString($month).' '.$year.'</h2>';
+// echo '<h2>'.monthToString($month).' '.$year.'</h2>';
 echo draw_calendar($month, $year);
 if (isset($thanks)) {echo $thanks; } ;
 ?>
+</div>
 
 <form action="/" method="post">
   <fieldset>
